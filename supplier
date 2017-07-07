@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<title>Create invoice</title>
+	 	<style>
+			.button-div td {
+				display: flex;
+			}
+		 	@media (max-width: 684px) {
+				.flex-container {
+					-webkit-flex-direction: column;
+    				flex-direction: column;
+					margin: 0 auto;
+				}
+				
+				.flex-item {
+					margin: 0 auto;
+					width: 100%;
+					margin: 20px 0 0 0px;
+					text-align: center;
+				}
+			}
+			
+			@media (min-width: 685px) {
+				.flex-item {
+					width: 100%;
+				}
+				.final {
+					text-align: right;
+				}
+				.left-padding {
+					margin-left: 22px;
+				}
+			} 	
+
+			.raw-material {
+				border: none;
+			}
+			
+			.raw-material th, .raw-material td { 
+				border: 1px solid black; 
+				border-collapse: collapse;
+			} 
+			
+			.raw-material {
+				width: 100%;
+			}
+			
+			table td input[type="text"] {
+				width: 97%;
+			}
+			
+			.raw-material thead tr th:first-child, .raw-material tbody tr td:first-child{
+				border:none;  
+				background: transparent;
+			}
+			
+		</style> 
+		
+	</head> 
+  
+	<body> 
+		<div id="content"> 
+			<b><label id="user"></label> --- <label id="actor"></b>&nbsp;</label><a id="logout" href="../login.html">Logout</a>
+			<image src="../images/pglogo.png" id="logo"><br>
+			<label id="date">Date:- <label id="thetoday"></label></label>
+			
+			<center class="top-padding">
+			<h2>Create Invoice</h2> 
+			</center>
+			
+			<div class="flex-container"> 
+				<div class="flex-item">
+					<div>
+						<span id="tag">PO#</span>
+						<span><select class="dropdown">
+							<option>Select</option>
+							<option value="PGPO2605">PGPO2605</option>
+							<option value="HULPO1504">HULPO1504</option>
+						</select></span>
+					</div><br><div>
+						<span id="tag">Vendor#</span> 
+						<span><input class="value" type="text" disabled></span> 
+					</div><br><div>
+						<span id="tag">Invoice Date</span> 
+						<span><input class="value" type="date"></span>  
+					</div>
+				</div>	 
+				<div class="flex-item">
+					<div>
+						<span id="tag">Expected Delivery Date</span> 
+						<span><input class="value" type="date"></span>  
+					</div><br><div>
+						<span id="tag">Contract ID</span> 
+						<span><input  class="value" type="text" disabled></span> 
+					</div>
+				</div> 
+			</div>
+			<br>
+			<br>
+			<h4 class="left-padding">Raw material Details</h4> 
+			<center> 
+			<div style="overflow:auto;"> 
+				<table class="raw-material"> 
+				<thead> 
+					<tr> 
+						<th></th>
+						<th>Item Identifier</th> 
+						<th>Contract ID</th> 
+						<th>Product</th> 
+						<th>Lot#</th> 
+						<th>Qty</th> 
+						<th>Unit Price($)</th> 
+						<th>Tax Rate</th> 
+						<th>Tax</th> 
+						<th>Price($)</th> 
+					</tr> 
+				</thead>
+				<tbody>		
+					<tr> 	
+						<td name="select"><input value="1" type="checkbox" name="record"></td>
+						<td><input class="item" type="text"></td> 
+						<td class="n-edit"></td> 
+						<td class="n-edit"></td> 
+						<td><input class="lot" type="text"></td> 
+						<td><input id="qty" class="qty change" type="text" ></td> 
+						<td><input id="u_price" class="u_price change" type="text" ></td> 
+						<td><input id="tax_rate" class="tax_rate change" type="text" ></td> 
+						<td class="n-edit tax"></td> 
+						<td class="n-edit price"></td> 
+					</tr>
+				</tbody>
+				</table>
+				<br>
+			</div> 
+			</center> 
+			
+			<div> 
+				<div class="flex-container left-padding"> 
+					<div class="flex-item"> 
+						<div> 
+							<button class="add-row btn-2">Add Item</button> 	
+							<button class="delete-row btn-2">Delete Item</button> 
+						</div> 
+					</div> 
+					<div class="flex-item final">
+						<div>
+							<span id="tag-small">Subtotal($)</span> 
+							<span class="value-small subtotal" style="margin:2px; text-align: left">0.00</span>
+						</div>
+						<div>
+							<span id="tag-small">Tax($)</span> 
+							<span class="value-small tax_amount" style="margin:2px; text-align: left">0.00</span> 
+						</div>
+						<div>
+							<span id="tag-small">Total($)</span> 
+							<span class="value-small total" style="margin:2px; text-align: left">0.00</span> 
+						</div>
+					</div> 
+				</div> 
+				<center>
+					<table class="button-div">
+						<tr>
+							<td><button id="create" class="btn-1 btn-blue">Create</button> 
+								<button id="cancel" class="btn-1 btn-blue">Cancel</button></td>
+						</tr>			
+					</table>	
+				</center>
+			</div> 
+			
+			<div class="success-box" style="display:none;">
+				<a id="close" style="float: right;">[x]</a>
+				<center>
+					Invoice created successfully!! 
+					<br>
+					<br>
+					<span id="display" class="message value"></span>
+				</center>		
+			</div>
+		</div> 
+	</body> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="../js/script.js"></script>
+	
+	<script>
+			
+			$("#create").click(function() {
+				$(".message").html("PGIN1234");
+				$(".success-box").toggle();
+			});
+			
+			$("#close").click(function() {
+				$(".success-box").hide();
+			});
+			
+			$("#cancel").click(function() {
+				window.location.href = "Supplier_Welcome.html"
+			});
+
+	</script>
+</html>
