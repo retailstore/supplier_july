@@ -1,0 +1,324 @@
+#logo {
+	height: 54px;
+	width: 54px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	float:right;
+}
+
+
+#date {
+	position: absolute;
+	top: 44px;
+	right: 64px;
+	float:right;
+}
+
+.dropdown {
+	width:130px;
+	height:26px;
+	background:white; color:#696969;
+	padding:1px;
+	border:2px solid Forestgreen;
+}
+
+#detail {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	float: right;
+}
+
+.btn-blue {
+	color:white;
+	background: #0576C6;
+	white-space:normal;
+	
+}
+
+.btn-1 {
+	width: 90px;
+	height: 40px;
+	margin: 20px;
+}
+
+.btn-1a {
+	color:white;
+	background: rgb(53, 103, 42);
+	width: 90px;
+	height: 40px;
+	white-space:normal;
+	margin: 20px;
+}
+
+.btn-small {
+	width: 90px;
+	height: 35px;
+	margin: 20px;
+}
+
+.btn-med {
+	width: 120px;
+	height: 35px;
+	margin: 20px;
+}
+
+
+.btn-3 {
+	color: white;
+	background: #007CC2;
+	width: 100px;
+	height: 40px;
+	border-radius: 12px;
+}
+
+.btn-2 {
+	color: black;
+	background: #91D6F3;
+	width: 100px;
+	height: 20px;
+	border: 2px solid #007CC2;
+}
+
+
+
+html, body {
+	height: 100%;
+	margin: 8;
+}
+
+#content {
+	border:2px solid #1E90FF;
+	background-color: rgba(240, 240, 240, 1);
+	min-height:80%; 
+ 	width:90%;
+	margin: 0 auto;
+ 	padding: 1%;
+ 	position: relative;
+	font-family: "Calibri", sans-serif;
+	overflow-x: scroll;
+}
+
+.top-padding {
+	padding-top: 5%;
+}
+
+.instruction {
+	width:200px;
+	height:20px;
+	background:white;
+	color: #e26012;
+}
+
+th { 
+	background-color: #007CC2; 
+	color: white; 
+	height: 40px;
+	padding: 3px;
+} 
+
+
+#tag { 
+	width:40%;
+	height:auto;
+	background:white;
+	color:#696969; 
+	padding: 3px;
+	text-align: left;
+} 
+
+@media (max-width: 445px) {
+	#tag {
+		width: 95px;
+	}
+}
+.value { 
+	border:2px solid Forestgreen; 
+	width:125px;
+	height:20px;
+	background:white; color:#696969;
+	padding:1px;
+}
+
+.value-small { 
+	border:2px solid Forestgreen; 
+	width:108px;
+	height:20px;
+	background:white; color:#696969;
+	padding:1px;
+} 
+
+#tag-small {
+	width:105px;
+	height:20px;
+	background:white;
+	color:#696969; 
+	padding:3px;
+	text-align:left;
+}
+.text-area {
+	border:2px solid Forestgreen;
+	width:250px;
+	height:90px;
+}
+
+
+.flex-container {
+	display: flex;
+}
+
+
+span {
+	display: inline-block;
+}
+
+.sidenav {
+	width: 0;
+    height: 88%;
+    position: absolute;
+	padding-top: 60px;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #A9A9A9;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav div{
+    color: #696969;
+    transition: 0.3s;
+}
+
+div input[type="search"]{
+	border-radius:6px;
+    height: 35px;
+    width: 175px;
+    
+}
+div input[type="radio"]{
+	padding-left:60px;
+}
+
+.sidenav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #696969;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#displayDiv {
+	margin: 0 auto;
+	width: 270px;
+	display:none;
+	position: relative;
+	border: 2px solid hsl(202, 91%, 42%);
+	background: linear-gradient(#e5eaef 5%, rgb(109, 192, 241) 100%) #e5eaef;
+}
+
+.btn-4 {
+	color:white;
+	background: linear-gradient(rgb(249, 128, 71) 5%, rgb(181, 62, 5) 100%) rgb(249, 128, 71);
+	position: absolute;
+	width: 200px;
+	right:    0;
+	bottom:   0;
+}
+
+.btn-5{
+	padding: 2px;
+	width: 100px;
+	height: 40px;
+}
+
+.btn-5a{
+	color:white;
+	background: linear-gradient(rgb(51, 146, 58) 5%, rgb(31, 76, 34) 100%) rgb(51, 146, 58);
+	padding: 2px;
+	width: 100px;
+	height: 40px;
+}
+
+
+.raw-material {
+	border-collapse: collapse; 
+	z-index: 0;
+} 
+
+
+@media (min-width: 700px) {
+	.success-box {
+		position: absolute;
+		height: 125px;
+		width: 30%;
+		margin: 30% 0 0 33%;
+		z-index: 2000;
+		top: -20px;
+		background: linear-gradient(#e5eaef 5%, rgb(109, 192, 241) 100%) #e5eaef;
+		border: 1px solid blue;
+		padding-top: 15px;
+	}
+}
+
+@media (max-width: 700px) {
+	.success-box {
+		position: absolute;
+		height: 125px;
+		width: 60%;
+		margin: 80% 0 0 20%;
+		z-index: 2000;
+		top: -20px;
+		background: linear-gradient(#e5eaef 5%, rgb(109, 192, 241) 100%) #e5eaef;
+		border: 1px solid blue;
+		padding-top: 15px;
+	}
+}
+
+span {
+	display: inline-block;
+}
+
+.n-edit {
+	background-color:#b3ccff;
+}
+
+.opt-container {
+	border:2px solid Forestgreen;
+	width:220px;
+	height:20px;
+	background:white; color:#696969;
+	text-align: left;
+}
+
+.opt-msg {
+	padding-left: 8px;
+}
+
+#myUl {
+	list-style: none;
+	margin: 0 auto;
+	width: 50%;
+}
