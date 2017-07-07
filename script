@@ -1,0 +1,211 @@
+var month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
+
+var date=new Date();
+var mName = month[date.getMonth()];
+
+var day=date.getDate();
+//<!-- var month=date.getMonth()+1; -->
+var year=date.getFullYear();
+if(day<10)
+	day="0"+day;
+var today=mName+" "+day+", "+year;
+document.getElementById("thetoday").innerHTML=String(today);
+
+
+function back_login() {
+	window.location.href = "../login.html"
+}
+
+var data;
+
+function funcLogin() {
+	var users = [{
+		username : "admin",
+		name: "John",
+		pin: "1234"
+	}]
+	var username=document.getElementById("userName").value;
+	var pwd=document.getElementById("pwd").value;
+	if(username=="admin" && pwd=="1234" ) {
+		window.localStorage.setItem('actor', document.getElementById("options").value);
+		if(document.getElementById("options").value=="Supplier")
+			{
+				window.location.href='partials/Supplier_Welcome.html';
+				window.localStorage.setItem('name',"Kirti");
+			}
+		else if(document.getElementById("options").value=="P&G Finance")
+			{
+				window.location.href='partials/P&GFinance_Welcome.html';
+				window.localStorage.setItem('name',"Robert");
+			}
+		else if(document.getElementById("options").value=="Buyer")
+			{
+				window.location.href='partials/Buyer_Welcome.html';
+				window.localStorage.setItem('name',"John");
+			}
+		else if(document.getElementById("options").value=="P&G Warehouse")
+			{
+				window.location.href='partials/Warehouse_Welcome.html';
+				window.localStorage.setItem('name',"Philip");
+			}
+		else if(document.getElementById("options").value=="SGS lab India")
+			{
+				window.location.href='partials/SGS_Welcome.html';
+				window.localStorage.setItem('name',"Tommy");
+			}
+		else if(document.getElementById("options").value=="Expeditor India")
+			{
+				window.location.href='partials/Expeditor_india_Welcome.html';
+				window.localStorage.setItem('name',"Rajesh");
+			}
+		else if(document.getElementById("options").value=="Expeditor USA")
+			{
+				window.location.href='partials/Expeditor_usa_Welcome.html';
+				window.localStorage.setItem('name',"Mary");
+			}
+		else if(document.getElementById("options").value=="Covance Lab USA")
+			{
+				window.location.href='partials/Covance_Welcome.html';
+				window.localStorage.setItem('name',"Maggie");
+			}
+		else{
+			alert("Something went wrong");
+		}
+	}
+}
+
+
+function myFilter() {
+	var input, filter, ul, li, a, i;
+	input = document.getElementById('myInput');
+	filter = input.value.toUpperCase();
+	ul = document.getElementById("myUl");
+	li = ul.getElementsByTagName('li');
+	for (i = 0; i < li.length; i++) {
+		a = li[i].getElementsByTagName("input")[0];
+		if (a.value.toUpperCase().indexOf(filter) > -1) {
+			li[i].style.display = "";
+		} else {
+			li[i].style.display = "none";
+		}
+	}
+}
+
+	
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+	document.getElementById("open").style.visibility = "hidden";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+	document.getElementById("open").style.visibility = "visible";
+
+}
+
+
+$(".opt-container").hover(function(){
+	$(this).css({"box-shadow": "5px 5px 5px #888888"});
+	}, function(){
+	$(this).css({"background-color": "white", "box-shadow": "none"});
+});
+
+$(".opt-container").click(function(){
+	$(this).css("transform", "translateY(4px)")
+})
+
+function back () {
+	window.history.back();
+}
+
+$("#user").text(window.localStorage.getItem('name'));
+$("#actor").text(window.localStorage.getItem('actor'));
+
+calculate = function() {
+	qty_ele = $(this).parent().siblings().children("#qty").val();
+	unit_price_ele = $(this).parent().siblings().children("#u_price").val();
+	tax_rate_ele = $(this).parent().siblings().children("#tax_rate").val();
+	
+	qty_ele = Number(qty_ele);
+	unit_price_ele = Number(unit_price_ele);
+	tax_rate_ele = Number(tax_rate_ele)
+	
+	var qty = parseFloat(qty_ele) || 0;
+	var unit_price = parseInt(unit_price_ele, 10) || 0 ;
+	var tax_rate = parseInt(tax_rate_ele, 10) || 0;
+	var tax = Number(qty*unit_price*(tax_rate/100))
+	var total = Number(qty*unit_price*(1+(tax_rate/100)));
+	
+	$(this).parent().siblings(".price").html(total.toFixed(2));
+	$(this).parent().siblings(".tax").html(tax.toFixed(2));
+					
+	var total = 0;
+	$(".price").each(function() {
+		total += parseFloat($(this).text());
+	});
+	
+	
+	var tax = 0;
+	$(".tax").each(function() {
+		tax += parseFloat($(this).text());
+	});
+	
+	subtotal = total-tax
+	$(".total").text(total.toFixed(2));
+	$(".tax_amount").text(tax.toFixed(2));
+	$(".subtotal").text(subtotal.toFixed(2));
+}
+
+$(".qty, .u_price, .tax_rate").change(calculate);
+$(".qty, .u_price, .tax_rate").keyup(calculate);
+
+$(document).ready(function(){
+	$(".add-row").click(function(){
+		var data = '<tr><td name="select"><input value="1" type="checkbox" name="record"></td><td><input class="item" type="text"></td><td class="n-edit"></td><td class="n-edit"></td><td><input class="lot" type="text"></td><td><input id="qty" class="qty change" type="text"></td><td><input id="u_price" class="u_price change" type="text"></td><td><input id="tax_rate" class="tax_rate change" type="text"></td><td class="n-edit tax"></td><td class="n-edit price"></td></tr>'
+		$(".raw-material tbody").append(data);
+		
+		$(".qty, .u_price, .tax_rate").keyup(calculate);
+	});
+		
+	// Find and remove selected table rows
+	$(".delete-row").click(function(){
+		$(".raw-material tbody").find('input[name="record"]').each(function(){
+			if($(this).is(":checked")){
+				$(this).parents("tr").remove();
+			}
+		});
+		
+		var total = 0;
+		$(".price").each(function() {
+			total += parseFloat($(this).text());
+		});
+		
+		
+		var tax = 0;
+		$(".tax").each(function() {
+			tax += parseFloat($(this).text());
+		});
+		
+		subtotal = total-tax
+		$(".total").text(total.toFixed(2));
+		$(".tax_amount").text(tax.toFixed(2));
+		$(".subtotal").text(subtotal.toFixed(2));
+	});
+});
+
+
+
